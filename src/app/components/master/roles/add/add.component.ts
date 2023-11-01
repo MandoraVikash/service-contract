@@ -44,102 +44,102 @@ export class RolesAddComponent {
     { name: 'Stock' },
   ];
 
-checkParents(el){
-  console.log(el.parentElement)
-}
+// checkParents(el){
+//   console.log(el.parentElement)
+// }
 
-  onCategoryChange(event: Event) {
-      const el = event.target as HTMLInputElement;
+//   onCategoryChange(event: Event) {
+//       const el = event.target as HTMLInputElement;
 
-if(el.parentElement.nextElementSibling){
-  console.log("has child nodes")
-}
+// if(el.parentElement.nextElementSibling){
+//   console.log("has child nodes")
+// }
 
-      // console.log(el.parentElement.nextElementSibling.children)
-      // console.log(el.parentElement.nextSibling)
-      // console.log(el.parentElement.nextElementSibling)
+//       // console.log(el.parentElement.nextElementSibling.children)
+//       // console.log(el.parentElement.nextSibling)
+//       // console.log(el.parentElement.nextElementSibling)
 
-      if(el.parentElement.nextElementSibling == null){
-        console.log("last child")
-        this.checkParents(el)
-      }
-  }
+//       if(el.parentElement.nextElementSibling == null){
+//         console.log("last child")
+//         this.checkParents(el)
+//       }
+//   }
 
 
 
 // -------------------------------------------------------------
-  // @ViewChild('categories') categories: ElementRef;
-  // @ViewChild('subcategories') subcategories: ElementRef;
+  @ViewChild('categories') categories: ElementRef;
+  @ViewChild('subcategories') subcategories: ElementRef;
 
-  // selectAllChildren(element: HTMLInputElement) {
-  //   element.parentElement.classList.remove('partial')
-  //   if (element.parentElement.nextElementSibling != null) {
-  //     const children = Array.from(element.parentElement.nextElementSibling.children)
-  //     children.forEach(el => {
-  //       const checkBox = el.firstChild.firstChild as HTMLInputElement
-  //       checkBox.checked = element.checked
-  //       this.selectAllChildren(checkBox);
-  //     });
-  //   } else {
-  //     console.log("no children present");
-  //   }
+  selectAllChildren(element: HTMLInputElement) {
+    element.parentElement.classList.remove('partial')
+    if (element.parentElement.nextElementSibling != null) {
+      const children = Array.from(element.parentElement.nextElementSibling.children)
+      children.forEach(el => {
+        const checkBox = el.firstChild.firstChild as HTMLInputElement
+        checkBox.checked = element.checked
+        this.selectAllChildren(checkBox);
+      });
+    } else {
+      console.log("no children present");
+    }
 
-  // }
+  }
 
-  // selectAllParent(element: HTMLInputElement) {
-  //   console.log("Element:", element)
-  //   if (!element.parentElement.classList.contains('filter-level')) {
-  //     const parent = element.parentElement.parentElement.parentElement.previousElementSibling;
-  //     // parent.classList.add('partial')
-  //     if (parent) {
-  //       console.log(parent.firstChild);
-  //       this.selectAllParent(<HTMLInputElement>parent.firstChild)
-  //     }
-  //   } else {
-  //     console.log("no parent")
-  //   }
-  // }
-
-
-
-  // onCategoryChange(event: Event) {
-
-  //   const element = event.target as HTMLInputElement;
-
-  //   //  Check all its Children
-  //   this.selectAllChildren(element);
-  //   this.selectAllParent(element)
+  selectAllParent(element: HTMLInputElement) {
+    console.log("Element:", element)
+    if (!element.parentElement.classList.contains('filter-level')) {
+      const parent = element.parentElement.parentElement.parentElement.previousElementSibling;
+      // parent.classList.add('partial')
+      if (parent) {
+        console.log(parent.firstChild);
+        this.selectAllParent(<HTMLInputElement>parent.firstChild)
+      }
+    } else {
+      console.log("no parent")
+    }
+  }
 
 
 
-  //   // Check is all its siblings check or not 
+  onCategoryChange(event: Event) {
 
-  //   const siblings = Array.from(element.parentElement.parentElement.parentElement.children)
-  //   let flag = true;
-  //   let allUnchecked = true
-  //   siblings.forEach(el => {
-  //     const checkBox = el.children[0].children[0] as HTMLInputElement
-  //     if (checkBox.checked == false) {
-  //       flag = false
-  //     } else {
-  //       allUnchecked = false
-  //     }
-  //   })
+    const element = event.target as HTMLInputElement;
+
+    //  Check all its Children
+    this.selectAllChildren(element);
+    this.selectAllParent(element)
 
 
-  //   if (!element.parentElement.parentElement.classList.contains('first-level')) {
-  //     const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
 
-  //     flag ? (parent.parentElement.classList.remove('partial'), parent.checked = true) : (parent.parentElement.classList.add('partial'),
-  //       parent.checked = false);
+    // Check is all its siblings check or not 
 
-  //     if (allUnchecked) {
-  //       const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
-  //       parent.parentElement.classList.remove('partial')
-  //     }
+    const siblings = Array.from(element.parentElement.parentElement.parentElement.children)
+    let flag = true;
+    let allUnchecked = true
+    siblings.forEach(el => {
+      const checkBox = el.children[0].children[0] as HTMLInputElement
+      if (checkBox.checked == false) {
+        flag = false
+      } else {
+        allUnchecked = false
+      }
+    })
 
-  //   }
-  // }
+
+    if (!element.parentElement.parentElement.classList.contains('first-level')) {
+      const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
+
+      flag ? (parent.parentElement.classList.remove('partial'), parent.checked = true) : (parent.parentElement.classList.add('partial'),
+        parent.checked = false);
+
+      if (allUnchecked) {
+        const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
+        parent.parentElement.classList.remove('partial')
+      }
+
+    }
+  }
 
 
 // -----------------------------------------------------
