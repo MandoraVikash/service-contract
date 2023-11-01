@@ -142,6 +142,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+const _c0 = ["categories"];
+const _c1 = ["subcategories"];
 function RolesAddComponent_li_34_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
@@ -251,78 +254,58 @@ class RolesAddComponent {
     this.submitted = false;
     this.addRoles = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroup({});
   }
-  checkParents(el) {
-    console.log(el.parentElement);
+  selectAllChildren(element) {
+    element.parentElement.classList.remove('partial');
+    if (element.parentElement.nextElementSibling != null) {
+      const children = Array.from(element.parentElement.nextElementSibling.children);
+      children.forEach(el => {
+        const checkBox = el.firstChild.firstChild;
+        checkBox.checked = element.checked;
+        this.selectAllChildren(checkBox);
+      });
+    } else {
+      console.log("no children present");
+    }
+  }
+  selectAllParent(element) {
+    console.log("Element:", element);
+    if (!element.parentElement.classList.contains('filter-level')) {
+      const parent = element.parentElement.parentElement.parentElement.previousElementSibling;
+      // parent.classList.add('partial')
+      if (parent) {
+        console.log(parent.firstChild);
+        this.selectAllParent(parent.firstChild);
+      }
+    } else {
+      console.log("no parent");
+    }
   }
   onCategoryChange(event) {
-    const el = event.target;
-    if (el.parentElement.nextElementSibling) {
-      console.log("has child nodes");
-    }
-    // console.log(el.parentElement.nextElementSibling.children)
-    // console.log(el.parentElement.nextSibling)
-    // console.log(el.parentElement.nextElementSibling)
-    if (el.parentElement.nextElementSibling == null) {
-      console.log("last child");
-      this.checkParents(el);
+    const element = event.target;
+    //  Check all its Children
+    this.selectAllChildren(element);
+    this.selectAllParent(element);
+    // Check is all its siblings check or not 
+    const siblings = Array.from(element.parentElement.parentElement.parentElement.children);
+    let flag = true;
+    let allUnchecked = true;
+    siblings.forEach(el => {
+      const checkBox = el.children[0].children[0];
+      if (checkBox.checked == false) {
+        flag = false;
+      } else {
+        allUnchecked = false;
+      }
+    });
+    if (!element.parentElement.parentElement.classList.contains('first-level')) {
+      const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0];
+      flag ? (parent.parentElement.classList.remove('partial'), parent.checked = true) : (parent.parentElement.classList.add('partial'), parent.checked = false);
+      if (allUnchecked) {
+        const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0];
+        parent.parentElement.classList.remove('partial');
+      }
     }
   }
-  // -------------------------------------------------------------
-  // @ViewChild('categories') categories: ElementRef;
-  // @ViewChild('subcategories') subcategories: ElementRef;
-  // selectAllChildren(element: HTMLInputElement) {
-  //   element.parentElement.classList.remove('partial')
-  //   if (element.parentElement.nextElementSibling != null) {
-  //     const children = Array.from(element.parentElement.nextElementSibling.children)
-  //     children.forEach(el => {
-  //       const checkBox = el.firstChild.firstChild as HTMLInputElement
-  //       checkBox.checked = element.checked
-  //       this.selectAllChildren(checkBox);
-  //     });
-  //   } else {
-  //     console.log("no children present");
-  //   }
-  // }
-  // selectAllParent(element: HTMLInputElement) {
-  //   console.log("Element:", element)
-  //   if (!element.parentElement.classList.contains('filter-level')) {
-  //     const parent = element.parentElement.parentElement.parentElement.previousElementSibling;
-  //     // parent.classList.add('partial')
-  //     if (parent) {
-  //       console.log(parent.firstChild);
-  //       this.selectAllParent(<HTMLInputElement>parent.firstChild)
-  //     }
-  //   } else {
-  //     console.log("no parent")
-  //   }
-  // }
-  // onCategoryChange(event: Event) {
-  //   const element = event.target as HTMLInputElement;
-  //   //  Check all its Children
-  //   this.selectAllChildren(element);
-  //   this.selectAllParent(element)
-  //   // Check is all its siblings check or not 
-  //   const siblings = Array.from(element.parentElement.parentElement.parentElement.children)
-  //   let flag = true;
-  //   let allUnchecked = true
-  //   siblings.forEach(el => {
-  //     const checkBox = el.children[0].children[0] as HTMLInputElement
-  //     if (checkBox.checked == false) {
-  //       flag = false
-  //     } else {
-  //       allUnchecked = false
-  //     }
-  //   })
-  //   if (!element.parentElement.parentElement.classList.contains('first-level')) {
-  //     const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
-  //     flag ? (parent.parentElement.classList.remove('partial'), parent.checked = true) : (parent.parentElement.classList.add('partial'),
-  //       parent.checked = false);
-  //     if (allUnchecked) {
-  //       const parent = element.parentElement.parentElement.parentElement.previousElementSibling.children[0] as HTMLInputElement
-  //       parent.parentElement.classList.remove('partial')
-  //     }
-  //   }
-  // }
   // -----------------------------------------------------
   // const subCategory = Array.from(element.parentElement.parentElement.nextElementSibling.children);
   // console.log(subCategory)
@@ -352,6 +335,17 @@ class RolesAddComponent {
   static #_2 = this.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
     type: RolesAddComponent,
     selectors: [["app-add"]],
+    viewQuery: function RolesAddComponent_Query(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c0, 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c1, 5);
+      }
+      if (rf & 2) {
+        let _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.categories = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.subcategories = _t.first);
+      }
+    },
     decls: 35,
     vars: 4,
     consts: [[3, "title", "active_item"], [1, "buttons", "text-end"], ["form", "add-roles", 1, "btn", "btn-success"], [1, "conatiner-fluid"], [1, "row"], ["id", "add-roles", 3, "formGroup", "ngSubmit"], [1, "col-md-12"], [1, "card"], [1, "card-body"], [1, "col-md-6"], [1, "form-group", "mb-3"], ["for", "role_name", 1, "form-label"], ["type", "text", "name", "", "id", "role_name", "placeholder", "Role Name", 1, "form-control"], ["for", "", 1, "form-label"], [1, "media", "mt-2"], [1, "media-body", "icon-state"], [1, "switch"], ["type", "checkbox", "checked", ""], [1, "switch-state"], [1, "card-header"], [1, "list-unstyled"], ["class", "first-level", 4, "ngFor", "ngForOf"], [1, "first-level"], [1, "form-check", "form-check-inline", "checkbox"], ["type", "checkbox", "value", "option1", 1, "form-check-input", "category", 3, "id", "name", "change"], [1, "form-check-label", "mb-0", 3, "for"], [1, "list-unstyled", "ps-4"], ["type", "checkbox", "name", "User", "value", "option1", 1, "form-check-input", "category", 3, "id", "change"], ["type", "checkbox", "name", "Roles", "value", "option1", 1, "form-check-input", "category", 3, "id", "change"]],
