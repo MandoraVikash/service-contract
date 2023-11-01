@@ -1,0 +1,51 @@
+<app-breadcrumb [title]="'Add Sub Group'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm btn-success" form="add-sub-group">Save</button>
+    </div>
+</app-breadcrumb>
+<div class="contianer-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="addGroup" (ngSubmit)="onSubmit()" id="add-sub-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Name<sup class="text-danger">*</sup></label>
+                                    <app-basic-input-field formGroupName="basicInfo"
+                                        [formControlNameValue]="'subgroupName'"></app-basic-input-field>
+                                        <small class="text-danger" *ngIf="submitted && f.subgroupName.errors?.required">
+                                            Sub group name is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Group<sup class="text-danger">*</sup></label>
+                                    <ng-select [items]="group" placeholder="Select Group" class="js-example-basic-single" bindLabel="name" bindValue="name"
+                                        formControlName="group"></ng-select>
+                                    <small class="text-danger" *ngIf="submitted && a.group.errors?.required">
+                                        Group is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Description</label>
+                                    <app-description formGroupName="basicInfo"
+                                        [formControlNameValue]="'description'"></app-description>
+
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <app-active-switch formGroupName="basicInfo"
+                                    [formControlNameValue]="'switch'"></app-active-switch>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

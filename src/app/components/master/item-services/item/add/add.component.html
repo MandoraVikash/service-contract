@@ -1,0 +1,163 @@
+<app-breadcrumb [title]="'Add Item'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-item">Save</button>
+    </div>
+</app-breadcrumb>
+
+
+<div>
+    <form [formGroup]="addItem" (ngSubmit)="onSubmit()" id="add-item">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label class="form-label">Item Name<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter item code'" [maxLength]="250"
+                            [formControlNameValue]="'itemname'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.itemname.errors?.required">
+                            Item Name is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label class="form-label">Item Code<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter item code'" [maxLength]="10"
+                            [formControlNameValue]="'itemcode'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.itemcode.errors?.required">
+                            Item Code is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label  class="form-label">Item
+                            Type<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="item_type" placeholder="Select item name name" bindLabel="type_name" bindValue="type_name"
+                            class="js-example-basic-single" formControlName="itemType"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.itemType.errors?.required">
+                            Item type is required
+                        </small>
+                    </div>
+                    
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label  class="form-label">Brand</label>
+                        <ng-select [items]="brand" bindLabel="brandName" bindValue="brandName" placeholder="Select brand name"
+                            class="js-example-basic-single" formControlName="brand"></ng-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">Category<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="category" placeholder="Select category name" bindLabel="name" bindValue="name"
+                            class="js-example-basic-single" formControlName="category"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.category.errors?.required">
+                            Category is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label  class="form-label">Group<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="group" bindLabel="name" bindValue="name"
+                            placeholder="Select group name" class="js-example-basic-single"
+                            formControlName="group"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.group.errors?.required">
+                            Group is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">Sub Group</label>
+                        <ng-select [items]="subgroup" bindLabel="name" bindValue="name" placeholder="Select sub group name"
+                            class="js-example-basic-single" formControlName="subGroup"></ng-select>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">Dealer Price<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter dealer price'" [textType]="'number'"
+                            [formControlNameValue]="'dealerPrice'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.dealerPrice.errors?.required">
+                            Dealer price is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">Rate<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter rate'" [textType]="'number'"
+                            [formControlNameValue]="'rate'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.rate.errors?.required">
+                            Rate is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">MRP<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter MRP'" [textType]="'number'"
+                            [formControlNameValue]="'mrp'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.mrp.errors?.required">
+                            MRP is required
+                        </small>
+                    </div>
+                    
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label  class="form-label">Warranty</label>
+                        <ng-select [items]="warranty" bindLabel="name" bindValue="name" placeholder="Select warranty"
+                            class="js-example-basic-single" formControlName="warranty"></ng-select>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label class="form-label">Unit<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter unit code'" [maxLength]="10"
+                            [formControlNameValue]="'unit'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.unit.errors?.required">
+                            Unit is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-4 mb-3">
+                        <label  class="form-label">HSN
+                            Code<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="hsnCode" bindLabel="name" bindValue="name" placeholder="Select HSN code"
+                            class="js-example-basic-single" formControlName="hsnCode"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.hsnCode.errors?.required">
+                            HSN code is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 1</label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 1'" [textType]="'number'"
+                            [formControlNameValue]="'tax1'"></app-basic-input-field>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 2</label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 2'" [textType]="'number'"
+                            [formControlNameValue]="'tax2'"></app-basic-input-field>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 3</label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 3'" [textType]="'number'"
+                        [formControlNameValue]="'tax3'"></app-basic-input-field>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 4</label>
+                        <app-number-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 4'" [maxLength]="10"  [formControlNameValue]="'tax4'"></app-number-input-field>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Description</label>
+                        <app-description formGroupName="basicInfo"
+                            [formControlNameValue]="'description'"></app-description>
+                    </div>
+
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

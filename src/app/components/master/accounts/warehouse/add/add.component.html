@@ -1,0 +1,71 @@
+<app-breadcrumb [title]="'Add Warehouse'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-warehouse">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addWarehouse" (ngSubmit)="onSubmit()" id="add-warehouse">
+                <div class="row">
+                    <div class=" col-12 mb-3">
+                        <label for="firm-name" class="form-label">Warehouse
+                            Name<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter warehouse name'" 
+                            [formControlNameValue]="'title'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.title.errors?.required"> Warehouse name is
+                            required</small>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="address"
+                            class="form-label">Address<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter address'" 
+                            [formControlNameValue]="'address'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.address.errors?.required">Address is
+                            required</small>
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="city"
+                            class="form-label">Area<app-required-star-icon></app-required-star-icon></label>
+                            <ng-select [items]="area" bindLabel="name" bindValue="name" placeholder="Select Area name"
+                            class="js-example-basic-single" formControlName="area"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.area.errors?.required">
+                            Area is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="city"
+                            class="form-label">City<app-required-star-icon></app-required-star-icon></label>
+                            <ng-select [items]="city" bindLabel="name" bindValue="name" placeholder="Select City name"
+                            class="js-example-basic-single" formControlName="city"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.city.errors?.required">
+                            City is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="state"
+                            class="form-label">State<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="state" bindLabel="name" bindValue="name" placeholder="Select State name"
+                            class="js-example-basic-single" formControlName="state"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.state.errors?.required">
+                            State is required
+                        </small>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <app-description formGroupName="basicInfo"
+                            [formControlNameValue]="'description'"></app-description>
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

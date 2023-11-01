@@ -1,0 +1,57 @@
+<app-breadcrumb
+  [title]="'MRN Return '"
+  [items]="['Stock']"
+  [active_item]="'MRN Return '"
+>
+  <div class="buttons text-end">
+    <a routerLink="add"
+      ><button class="btn btn-sm btn-primary">Add MRN Return </button></a
+    >
+  </div>
+</app-breadcrumb>
+<div>
+  <div class="card">
+    <div class="card-body">
+      <table datatable class="row-border hover mb-4">
+        <thead>
+          <tr>
+            <th width="8%">Sr. No</th>
+            <th>Challan No</th>
+            <th>Challan Date</th>
+            <th>Warehouse</th>
+            <th>Account</th>
+            <th width="8%">Status</th>
+            <th width="12%" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let item of tableList; let i = index">
+            <td class="">{{ i + 1 }}</td>
+            <td class="">{{ item.challan_no }}</td>
+            <td class="">{{ item.challan_date }}</td>
+            <td class="">{{ item.warehouse }}</td>
+            <td class="">{{ item.account }}</td>
+            <td class="align-middle">
+              <div class="media-body switch-sm d-flex align-items-center">
+                <label class="switch m-0">
+                  <input type="checkbox" checked="" /><span
+                    class="switch-state"
+                  ></span>
+                </label>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-evenly col-12 col-xl-7">
+                  <a href="#"><i class="icofont icofont-ui-edit"></i></a>
+                  <a href="#"><i class="icofont icofont-eye"></i></a>
+                  <a href="#"><i class="icofont icofont-ui-lock"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

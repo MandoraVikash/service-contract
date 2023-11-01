@@ -1,0 +1,57 @@
+<app-breadcrumb [title]="'Add Area'">
+    <div class="buttons text-end">
+        <button class="btn  btn-success " form="add-area">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addArea" (ngSubmit)="onSubmit()" id="add-area">
+                <div class="row">
+                    <!-- <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">Area Code<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'areaCode'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.areaCode.errors?.required"> 
+                                Area code is required
+                               </small> 
+
+                    </div> -->
+                    <div class=" col-12 mb-3">
+                        <label for="make-name" class="form-label">Area Name<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'areaName'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.areaName.errors?.required"> 
+                                Area name is required
+                               </small> 
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">City<app-required-star-icon></app-required-star-icon></label>
+                            <ng-select [items]="city" placeholder="Select category name" bindLabel="name" bindValue="name"
+                            class="js-example-basic-single" formControlName="city"></ng-select>
+                            <small class="text-danger" *ngIf="submitted && a.city.errors?.required"> 
+                                city is required
+                               </small> 
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">Pincode<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'pincode'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.pincode.errors?.required"> 
+                                Pincode is required
+                               </small> 
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                            <app-description formGroupName="basicInfo" [formControlNameValue]="'description'"></app-description>
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

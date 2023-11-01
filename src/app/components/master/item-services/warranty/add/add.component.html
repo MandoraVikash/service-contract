@@ -1,0 +1,50 @@
+<app-breadcrumb [title]="'Add Warranty'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-warranty">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addWarranty" (ngSubmit)="onSubmit()" id="add-warranty">
+                <div class="row">
+                    <div class=" col-12 mb-3">
+                        <label for="make-name" class="form-label">Warranty
+                            Title<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'warranty'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.warranty.errors?.required">
+                        Warranty title is required
+                        </small>
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label class="form-label">Duration<app-required-star-icon></app-required-star-icon></label>
+                        <app-number-input-field formGroupName="basicInfo" [Placeholder]="'Enter Duration'" [maxLength]="10"  [formControlNameValue]="'duration'"></app-number-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.duration.errors?.required">
+                            Duration is required
+                            </small>
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label  class="form-label">Duration Type<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="duration" bindLabel="name" bindValue="name" placeholder="Select Duration Type"
+                            class="js-example-basic-single" formControlName="durationType"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.durationType.errors?.required">
+                            Duration Type is required
+                        </small>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <app-description formGroupName="basicInfo"
+                            [formControlNameValue]="'description'"></app-description>
+
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

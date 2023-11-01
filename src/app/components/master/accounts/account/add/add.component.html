@@ -1,0 +1,218 @@
+<app-breadcrumb [title]="'Add Account'">
+    <div class="buttons text-end">
+        <button class="btn btn-success" form="add-account">Save</button>
+    </div>
+</app-breadcrumb>
+<div class="contianer-fluid">
+    <form [formGroup]="addAccountForm" (ngSubmit)="onSubmit()" id="add-account">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body overflow-x-auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Account Name<app-required-star-icon></app-required-star-icon></label>
+                                    <app-basic-input-field formGroupName="basicInfo"
+                                        [Placeholder]="'Enter Account Name'"
+                                        [formControlNameValue]="'accuntName'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.accuntName.errors?.required">
+                                        Account Name is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Account Group<app-required-star-icon></app-required-star-icon></label>
+                                    <app-basic-input-field formGroupName="basicInfo"
+                                        [Placeholder]="'Enter Account Group'"
+                                        [formControlNameValue]="'accountGroup'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.accountGroup.errors?.required">
+                                        Account Group is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Email</label>
+                                    <app-basic-input-field formGroupName="basicInfo" [textType]="'email'"
+                                        [Placeholder]="'Enter Email'"
+                                        [formControlNameValue]="'email'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.email.errors?.required">
+                                        Email is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Mobile Number</label>
+                                    <app-number-input-field formGroupName="basicInfo" [maxLength]="10" [minLength]="10"
+                                        [Placeholder]="'Enter Mobile Number'"
+                                        [formControlNameValue]="'mobileNumber'"></app-number-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.mobileNumber.errors?.required">
+                                        Mobile Number is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <app-number-input-field formGroupName="basicInfo" [maxLength]="10" [minLength]="10"
+                                        [Placeholder]="'Enter Phone Number'"
+                                        [formControlNameValue]="'phoneNumber'"></app-number-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.phoneNumber.errors?.required">
+                                        Phone Number is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">GST Number</label>
+                                    <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter GST Number'"
+                                        [formControlNameValue]="'gstNumber'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.gstNumber.errors?.required">
+                                        GST Number is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Pan Number</label>
+                                    <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter Pan Number'"
+                                        [formControlNameValue]="'panNumber'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.panNumber.errors?.required">
+                                        Pan Number is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Tax Zone<app-required-star-icon></app-required-star-icon></label>
+                                    <ng-select [items]="taxZone" bindLabel="name" bindValue="name" placeholder="Select Tax Zone" class="js-example-basic-single"
+                                        formControlName="taxZone"></ng-select>
+                                        <small class="text-danger" *ngIf="submitted && a.taxZone.errors?.required">
+                                            Tax Zone is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Description</label>
+                                    <app-description formGroupName="basicInfo"
+                                        [formControlNameValue]="'description'"></app-description>
+                                    <small class="text-danger" *ngIf="submitted && f.description.errors?.required">
+                                        Description is required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Contact Person Name<app-required-star-icon></app-required-star-icon></label>
+                                    <app-basic-input-field formGroupName="basicInfo"
+                                        [Placeholder]="'Contact Person Name'"
+                                        [formControlNameValue]="'contactPersonName'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.contactPersonName.errors?.required">
+                                        Contact Person Name is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Contact Person Mobile<app-required-star-icon></app-required-star-icon></label>
+                                    <app-number-input-field formGroupName="basicInfo" [maxLength]="10" [minLength]="10"
+                                        [Placeholder]="'Contact Person Mobile'"
+                                        [formControlNameValue]="'contactMobile'"></app-number-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.contactMobile.errors?.required">
+                                        Contact Person Mobile is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Addresss Line 1<app-required-star-icon></app-required-star-icon></label>
+                                    <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Addresss Line 1'"
+                                        [formControlNameValue]="'address1'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.address1.errors?.required">
+                                        Addresss Line 1 is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Addresss Line 2</label>
+                                    <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Addresss Line 2'"
+                                        [formControlNameValue]="'address2'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.address2.errors?.required">
+                                        Addresss Line 2 is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Area<app-required-star-icon></app-required-star-icon></label>
+                                    <ng-select [items]="area" bindLabel="name" bindValue="name" placeholder="Select Area" class="js-example-basic-single"
+                                        formControlName="area"></ng-select>
+                                        <small class="text-danger" *ngIf="submitted && a.area.errors?.required">
+                                            Area is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">City<app-required-star-icon></app-required-star-icon></label>
+                                    <ng-select [items]="city" bindLabel="name" bindValue="name" placeholder="Select City" class="js-example-basic-single"
+                                        formControlName="city"></ng-select>
+                                        <small class="text-danger" *ngIf="submitted && a.city.errors?.required">
+                                            City is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">State<app-required-star-icon></app-required-star-icon></label>
+                                    <ng-select [items]="state" bindLabel="name" bindValue="name" placeholder="Select State" class="js-example-basic-single"
+                                        formControlName="state"></ng-select>
+                                        <small class="text-danger" *ngIf="submitted && a.state.errors?.required">
+                                            State is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Pincode<app-required-star-icon></app-required-star-icon></label>
+                                    <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter Pincode'"
+                                        [formControlNameValue]="'pincode'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.pincode.errors?.required">
+                                        Pincode is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Country<app-required-star-icon></app-required-star-icon></label>
+                                    <ng-select [items]="country" bindLabel="name" bindValue="name" placeholder="Select Country" class="js-example-basic-single"
+                                        formControlName="country"></ng-select>
+                                        <small class="text-danger" *ngIf="submitted && a.country.errors?.required">
+                                            Country is required
+                                        </small>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <app-active-switch formGroupName="basicInfo"
+                                    [formControlNameValue]="'switch'"></app-active-switch>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

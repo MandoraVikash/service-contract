@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <div formGroupName="basicInfo" class="form-container">
+<!-- <label >{{ CheckData }}</label> -->
+<!-- <input class="form-control form-control-sm" [ngModel]="ItemValue" type="text" aria-label=".form-control-sm example" [formControlName]='formControlNameValue'> -->
+   
+<select class="form-select form-select-sm" aria-label="Small select example" [formControlName]='formControlNameValue'>
+      <option selected disabled></option>
+      <option   *ngFor="let item of items" [value]="item.value">{{ item.label}}</option>
+    </select>
+
+  </div>
+</form>

@@ -1,0 +1,99 @@
+<app-breadcrumb [title]="'Add Roles'" [active_item]="'Add Roles'">
+    <div class="buttons text-end">
+        <button class="btn btn-success" form="add-roles">Save</button>
+    </div>
+</app-breadcrumb>
+<div class="conatiner-fluid">
+    <div class="row">
+        <form [formGroup]="addRoles" (ngSubmit)="onSubmit()" id="add-roles">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Role Name</label>
+                                    <input type="text" name="" id="role_name" class="form-control"
+                                        placeholder="Role Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="" class="form-label">Status</label>
+                                    <div class="media mt-2">
+                                        <div class="media-body icon-state">
+                                            <label class="switch">
+                                                <input type="checkbox" checked /><span class="switch-state"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Access</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- <div class=" px-3 py-4"> -->
+                        <ul class="list-unstyled">
+                            <li *ngFor="let item of data; let i = index" class="first-level">
+                                <div class="form-check form-check-inline checkbox">
+                                    <input class="form-check-input category" id="{{ item.name }}" type="checkbox"
+                                        name="{{ item.name }}" value="option1" (change)="onCategoryChange($event)" />
+                                    <label class="form-check-label mb-0" for="{{ item.name }}">{{ item.name }}</label>
+                                </div>
+                                <ul class="list-unstyled ps-4">
+                                    <li>
+                                        <div class="form-check form-check-inline checkbox">
+                                            <input class="form-check-input category" id="User{{ i }}" type="checkbox"
+                                                name="User" value="option1" (change)="onCategoryChange($event)" />
+                                            <label class="form-check-label mb-0" for="User{{ i }}">User</label>
+                                        </div>
+                                        <ul class="list-unstyled ps-4">
+                                            <li>
+                                                <div class="form-check form-check-inline checkbox">
+                                                    <input class="form-check-input category" id="Add{{ i }}"
+                                                        type="checkbox" name="User" value="option1"
+                                                        (change)="onCategoryChange($event)" />
+                                                    <label class="form-check-label mb-0" for="Add{{ i }}">Add</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="form-check form-check-inline checkbox">
+                                                    <input class="form-check-input category" id="Edit{{ i }}"
+                                                        type="checkbox" name="User" value="option1"
+                                                        (change)="onCategoryChange($event)" />
+                                                    <label class="form-check-label mb-0" for="Edit{{ i }}">Edit</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline checkbox">
+                                            <input class="form-check-input category" id="Roles{{ i }}" type="checkbox"
+                                                name="Roles" value="option1" (change)="onCategoryChange($event)" />
+                                            <label class="form-check-label mb-0" for="Roles{{ i }}">Roles</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- </div> -->
+                    </div>
+                    <!-- <div class="card-footer">
+                        <button class="btn btn-success">Save</button>
+                    </div> -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

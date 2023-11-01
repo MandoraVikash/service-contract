@@ -1,0 +1,61 @@
+<app-breadcrumb [title]="'Add HSN Code'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-HsnCode">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addHsnCode" (ngSubmit)="onSubmit()" id="add-HsnCode">
+                <div class="row">
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="hsn-code" class="form-label">HSN
+                            Code<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'hsnCode'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.hsnCode.errors?.required"> HSN code is
+                            required</small>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="rate" class="form-label">Rate
+                            (%)<app-required-star-icon></app-required-star-icon></label>
+                            <ng-select [items]="rate" bindLabel="name" bindValue="name" placeholder="Select rate"
+                            class="js-example-basic-single" formControlName="rate"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.rate.errors?.required">
+                            Rate is required
+                        </small>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 1<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 1'" [textType]="'number'"
+                            [formControlNameValue]="'tax1'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.tax1.errors?.required"> Tax 1 is
+                                required</small>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 2<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 2'" [textType]="'number'"
+                            [formControlNameValue]="'tax2'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.tax2.errors?.required"> Tax 2 is
+                                required</small>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 3</label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 3'" [textType]="'number'"
+                        [formControlNameValue]="'tax3'"></app-basic-input-field>
+                    </div>
+                    <div class=" col-12 col-md-3 mb-3">
+                        <label class="form-label">Tax 4</label>
+                        <!-- <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 4'" [textType]="'number'" [formControlNameValue]="'tax4'"></app-basic-input-field> -->
+                        <app-number-input-field formGroupName="basicInfo" [Placeholder]="'Enter tax 4'" [maxLength]="10"  [formControlNameValue]="'tax4'"></app-number-input-field>
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

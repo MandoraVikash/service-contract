@@ -1,0 +1,170 @@
+<!-- <app-breadcrumb [title]="'Add User'">
+    <div class="buttons text-end">
+      <button class="btn btn-sm btn-primary" form="add-user">Submit</button>
+    </div>
+  </app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addUser" (ngSubmit)="onSubmit()" id="add-user">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="first-name" class="form-label">First name<app-required-star-icon></app-required-star-icon></label>
+                         <app-basic-input-field formGroupName="basicInfo"  [formControlNameValue]="'firstName'"></app-basic-input-field>
+                            <small *ngIf="submitted && f.firstName.errors?.required" class="text-danger">First name is required</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="last-name" class="form-label">Last name</label>
+                            <app-basic-input-field formGroupName="basicInfo"  [formControlNameValue]="'lastName'"></app-basic-input-field>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="mobile-number" class="form-label">Mobile number<app-required-star-icon></app-required-star-icon></label>
+                            <app-number-input-field formGroupName="basicInfo" [formControlNameValue]="'mobileNumber'"  [minLength]="10"  [maxLength]="10"></app-number-input-field>
+                            <small *ngIf="submitted && (f.mobileNumber.errors?.required || f.mobileNumber.errors?.minlength)" class="text-danger">Mobile number is required</small>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="email" class="form-label">Email<app-required-star-icon></app-required-star-icon></label>
+                         <app-basic-input-field formGroupName="basicInfo"  [formControlNameValue]="'email'"></app-basic-input-field>
+                        <small *ngIf="submitted && (f.email.errors?.required || f.email.errors?.email)" class="text-danger">Email is required</small>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="address" class="form-label">Address<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"  [formControlNameValue]="'address'"></app-basic-input-field>
+                        <small *ngIf="submitted && f.address.errors?.required" class="text-danger">Address is required</small>
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"  [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<app-breadcrumb [title]="'Add User'" [active_item]="'Add User'">
+    <button class="btn btn-success buttons">Save</button>
+
+</app-breadcrumb>
+<div class="conatiner-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <label for="image" class="">
+                                <img [src]="
+                                image
+                                  ? image
+                                  : '/assets/images/avtar/16.jpg'
+                              " alt="" class="img-fluid image" />
+                            </label>
+                            <input type="file" (change)="onFileAdded($event)" id="image" style="display: none"
+                                formControlName="source" />
+
+                            <p><span class="text-primary">Note: </span>Add a profile image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <!-- <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <h5>Add Staff Member</h5>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">First Name <sup
+                                        class="text-danger">*</sup></label>
+                                <input type="text" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">Last Name <sup
+                                        class="text-danger">*</sup></label>
+                                <input type="text" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">Email <sup
+                                        class="text-danger">*</sup></label>
+                                <input type="text" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">Phone No <sup
+                                        class="text-danger">*</sup></label>
+                                <input type="text" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">Password <sup
+                                        class="text-danger">*</sup></label>
+                                <input type="password" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="first_name" class="form-label">Confirm Password<sup
+                                        class="text-danger">*</sup></label>
+                                <input type="password" name="first_name" id="first_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="option_set" class="form-label">Role<sup class="text-danger">*</sup></label>
+                                <ng-select [items]="defaultBindingsList"  bindLabel="name" bindValue="name" class="js-example-basic-single"
+                                    placeholder="Role"></ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="option_set" class="form-label">Country<sup
+                                        class="text-danger">*</sup></label>
+                                <ng-select [items]="country"  bindLabel="name" bindValue="name" class="js-example-basic-single"
+                                    placeholder="Country"></ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <label for="option_set" class="form-label">Address</label>
+                                <textarea name="" id="" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">Status</label>
+                                <div class="media mt-2">
+                                    <div class="media-body icon-state">
+                                        <label class="switch">
+                                            <input type="checkbox" /><span class="switch-state"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

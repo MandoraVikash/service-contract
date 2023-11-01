@@ -1,0 +1,35 @@
+<app-breadcrumb [title]="'Add Category'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-category">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addCategory" (ngSubmit)="onSubmit()" id="add-category">
+                <div class="row">
+                    <div class=" col-12 mb-3">
+                        <label for="make-name" class="form-label">Category
+                            Name<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'categoryName'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.categoryName.errors?.required">
+                         Category name is required
+                        </small>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <app-description formGroupName="basicInfo"
+                            [formControlNameValue]="'description'"></app-description>
+
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

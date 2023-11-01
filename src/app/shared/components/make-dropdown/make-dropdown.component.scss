@@ -1,0 +1,60 @@
+.dropdown-box {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    .dropdown-bg {
+        background-color: #fff;
+        padding: 0.5rem;
+        margin-top: 4px;
+        box-shadow: 0px 0px 10px -1px #e7e7e7;
+
+
+        .dropdown-list:not(:last-child) {
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .dropdown-list.active{
+            background-color: #eeeeee;
+        }
+        .dropdown-list:hover{
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-list {
+            .img-box {
+                padding: 0.2rem;
+                padding-right: 3rem;
+                padding-left: 3rem;
+
+                .img {
+                    width: 2rem;
+                    aspect-ratio: 1/1;
+                    background-image: url("/assets/images/avtar/4.jpg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+
+            .select-text {}
+
+            .select-checkbox {
+                padding-left: 2rem;
+            }
+        }
+
+    }
+}
+
+.arrow-box{
+    right: 1.2rem;
+    top: 0.5rem;
+
+    .open{
+        transform: rotate(0deg);
+        transition: all 0.2s;
+    }
+    .close{
+        transform: rotate(180deg);
+        transition: all 0.2s;
+    }
+}

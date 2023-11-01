@@ -1,0 +1,77 @@
+
+
+<app-breadcrumb [title]="'Add Engine'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-engine">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addEngine" (ngSubmit)="onSubmit()" id="add-engine">
+                <div class="row">
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="engine-number" class="form-label">Chassis
+                            Number<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo" [Placeholder]="'Enter chassis number'" 
+                            [formControlNameValue]="'chassisNumber'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.chassisNumber.errors?.required">
+                            Chassis number is required
+                        </small>
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make"
+                            class="form-label">Make<app-required-star-icon></app-required-star-icon></label>
+                        <!-- <input type="text" class="form-control" formControlName="make"> -->
+                        <ng-select [items]="make" placeholder="Select make name" bindLabel="makeName" bindValue="makeId"
+                            class="js-example-basic-single"
+                            formControlName="make"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.make.errors?.required">
+                            Make is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="model-number"
+                            class="form-label">Model<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="tableList" bindLabel="model" bindValue="model" placeholder="Select model name"
+                            class="js-example-basic-single"
+                            formControlName="modelNumber"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.modelNumber.errors?.required">
+                            Model is required
+                        </small>
+                    </div>
+
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="brand"
+                            class="form-label">Capacity<app-required-star-icon></app-required-star-icon></label>
+                            <ng-select [items]="tableList" bindLabel="capacity" bindValue="capacity" placeholder="Select capacity name"
+                            class="js-example-basic-single"
+                            formControlName="capacity"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.capacity.errors?.required">
+                            Capacity is required
+                        </small>
+                    </div>
+                    <div class=" col-6 col-md-3 mb-3">
+                        <label for="brand" class="form-label">Manufacturing Year</label>
+                            <ng-select [items]="year" bindLabel="name" bindValue="name"
+                            class="js-example-basic-single" placeholder="Select year"
+                            formControlName="year"></ng-select>
+                    </div>
+                    <div class=" col-6 col-md-3 mb-3">
+                        <label for="brand" class="form-label">Manufacturing Month</label>
+                            <ng-select [items]="months" bindLabel="monthName" bindValue="monthNo"
+                            class="js-example-basic-single" placeholder="Select month"
+                            formControlName="month"></ng-select>
+                    </div>
+
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

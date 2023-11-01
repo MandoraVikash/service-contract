@@ -1,0 +1,39 @@
+<!-- <form [formGroup]="form">
+  <mat-card formGroupName="makeInfo" class="form-container">
+
+<div class="select-dropdown position-relative">
+  <div class="arrow-box position-absolute">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" [ngClass]="dropToggle ? 'open' : 'close'"  viewBox="0 0 16 16">
+        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
+  </div>
+  <input type="text" class="form-control form-control-sm" [value]="inputValue" (click)="dropToggle = !dropToggle" [formControlName]='formControlNameValue'>
+
+  <div class="dropdown-box"  [ngClass]="dropToggle ? 'd-block' : 'd-none'" >
+   <div class="dropdown-bg">
+    <label class="dropdown-list d-flex align-items-center" *ngFor="let product of Make; let index = index">
+      <div class="select-checkbox d-flex align-items-center">
+        <input type="checkbox" (change)="changeSelection($event, index)" >
+      </div>
+      <div class="img-box">
+        <div class="img"></div>
+      </div>
+      <div class="select-text">{{ product.name }}</div>
+     
+    </label>
+   </div>
+  </div>
+</div>
+
+</mat-card>
+</form> -->
+
+<form [formGroup]="form">
+  <div formGroupName="basicInfo" class="form-container">
+    <!-- <ng-select [items]="" class="js-example-basic-single" placeholder="Select Group" [formControlName]='formControlNameValue'></ng-select> -->
+    <!-- <select class="form-select form-select-sm" aria-label="Small select example" [formControlName]='formControlNameValue'>
+      <option selected disabled></option>
+      <option *ngFor="let product of Make; let index = index">{{ product.name }}</option>
+    </select> -->
+  </div>
+</form>

@@ -1,0 +1,39 @@
+<app-breadcrumb [title]="'Add Group'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm btn-success" form="add-group">Save</button>
+    </div>
+</app-breadcrumb>
+<div class="contianer-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="addGroup" (ngSubmit)="onSubmit()" id="add-group">
+                        <div class="row">
+                            <div class=" col-12">
+                                <div class="form-group mb-3">
+                                    <label for="make-name" class="form-label">Name<sup
+                                            class="text-danger">*</sup></label>
+                                    <app-basic-input-field formGroupName="basicInfo"  [formControlNameValue]="'groupName'"></app-basic-input-field>
+                                    <small class="text-danger" *ngIf="submitted && f.groupName.errors?.required">
+                                        Group name is required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <app-description formGroupName="basicInfo" [formControlNameValue]="'description'"></app-description>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <app-active-switch formGroupName="basicInfo"
+                                    [formControlNameValue]="'switch'"></app-active-switch>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

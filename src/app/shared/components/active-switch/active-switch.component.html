@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+    <div formGroupName="basicInfo" class="form-container">
+        <label for="switch" class="form-label">Status<app-required-star-icon></app-required-star-icon></label>
+        <div class="media-body text-start">
+            <label class="switch">
+                <input type="checkbox" checked="" id="switch" formControlName="switch"><span class="switch-state"></span>
+            </label>
+        </div>
+    </div>
+</form>

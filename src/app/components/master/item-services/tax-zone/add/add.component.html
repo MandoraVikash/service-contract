@@ -1,0 +1,43 @@
+<app-breadcrumb [title]="'Add Tax Zone'">
+    <div class="buttons text-end">
+        <button class="btn btn-sm  btn-success " form="add-taxzone">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addTaxZone" (ngSubmit)="onSubmit()" id="add-taxzone">
+                <div class="row">
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">
+                            Title<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'taxzone'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.taxzone.errors?.required">
+                            Tax Zone title is required
+                        </small>
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">Type <app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'type'"></app-basic-input-field>
+                        <small class="text-danger" *ngIf="submitted && f.type.errors?.required">
+                            Tax Zone type is required
+                        </small>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <app-description formGroupName="basicInfo"
+                            [formControlNameValue]="'description'"></app-description>
+
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

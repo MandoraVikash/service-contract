@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+    <div formGroupName="basicInfo" class="form-container">
+        <!-- for type only number on Input type  -->
+        <input class="form-control form-control-sm" [required]="Required" type="text"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+            [minlength]="minLength" [maxlength]="maxLength" [placeholder]="Placeholder" aria-label=".form-control-sm example"
+            [formControlName]='formControlNameValue'>
+    </div>
+</form>

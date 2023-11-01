@@ -1,0 +1,49 @@
+<app-breadcrumb [title]="'Engine'">
+    <div class="buttons text-end">
+      <a routerLink="add"><button class="btn btn-sm btn-primary">Add Engine</button></a>
+    </div>
+  </app-breadcrumb>
+  <div>
+      <div class="card">
+          <div class="card-body overflow-x-auto">
+               
+             <table datatable class="row-border hover mb-4">
+                  <thead> 
+                      <tr>
+                          <th width="8%">Sr. No</th>
+                          <th>Chassis No.</th>
+                          <th>Make</th>
+                          <th>Model</th>
+                          <th>Capacity</th>
+                          <th width="10%" >Status</th>
+                          <th width="8%" class="text-center">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody class="">
+                      <tr *ngFor="let item of tableList; index as index">
+                          <td class="">{{ index+1 }}</td>
+                          <td class="">{{ item.chassisNo }}</td>
+                          <td class="">{{ item.make }}</td>
+                          <td class="">{{ item.model }}</td>
+                          <td class="">{{ item.capacity }}</td>
+                          <td class="align-middle">
+                              <div class="media-body switch-sm d-flex align-items-center  ">
+                                  <label class="switch m-0">
+                                      <input type="checkbox" checked=""><span class="switch-state"></span>
+                                  </label>
+                              </div>
+                          </td>
+                          <td>
+                             <div class="d-flex justify-content-center">
+                              <div class="d-flex justify-content-evenly col-12 ">
+                                  <a [routerLink]="['/master/engine/edit']"><i class="icofont icofont-ui-edit"></i></a>
+                                  <a [routerLink]="['/master/engine/view']"><i class="icofont icofont-eye"></i></a>
+                              </div>
+                             </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>

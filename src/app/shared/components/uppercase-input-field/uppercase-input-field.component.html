@@ -1,0 +1,5 @@
+<form [formGroup]="form">
+    <div formGroupName="basicInfo" class="form-container">
+    <input class="form-control form-control-sm" [value]="textValue" #refInput (input)="textValueChange(refInput.value)"  [name]="formControlNameValue" [required]="Required" type="text" [minlength]="minLength" [maxlength]="maxLength" aria-label=".form-control-sm example" [formControlName]='formControlNameValue'>
+    </div>
+    </form>

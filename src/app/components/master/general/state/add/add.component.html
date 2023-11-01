@@ -1,0 +1,49 @@
+<app-breadcrumb [title]="'Add State'">
+    <div class="buttons text-end">
+        <button class="btn btn-success btn-sm" form="add-state">Save</button>
+    </div>
+</app-breadcrumb>
+
+<div class="card">
+    <div class="card-body">
+        <div>
+            <form [formGroup]="addState" (ngSubmit)="onSubmit()" id="add-state">
+                <div class="row">
+                    
+                    <div class=" col-12 mb-3">
+                        <label for="make-name" class="form-label">State Name<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'stateName'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.stateName.errors?.required"> 
+                                Area name is required
+                               </small> 
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">State Code<app-required-star-icon></app-required-star-icon></label>
+                        <app-basic-input-field formGroupName="basicInfo"
+                            [formControlNameValue]="'stateCode'"></app-basic-input-field>
+                            <small class="text-danger" *ngIf="submitted && f.stateCode.errors?.required"> 
+                                Area code is required
+                               </small> 
+                    </div>
+                    <div class=" col-12 col-md-6 mb-3">
+                        <label for="make-name" class="form-label">Country<app-required-star-icon></app-required-star-icon></label>
+                        <ng-select [items]="country" placeholder="Select Country" class="js-example-basic-single" bindLabel="name" bindValue="name"
+                        formControlName="country"></ng-select>
+                        <small class="text-danger" *ngIf="submitted && a.country.errors?.required">
+                            Country is required
+                        </small>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                            <app-description formGroupName="basicInfo" [formControlNameValue]="'description'"></app-description>
+                    </div>
+                    <div class="col-12">
+                        <app-active-switch formGroupName="basicInfo"
+                            [formControlNameValue]="'switch'"></app-active-switch>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

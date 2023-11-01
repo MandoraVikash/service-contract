@@ -1,0 +1,101 @@
+<app-breadcrumb [title]="'Add MRN Entry'" [active_item]="'Add  MRN Entry '">
+<button class="btn btn-success btn-sm buttons">Save</button>
+</app-breadcrumb>
+<div class="conatiner-fluid">
+    <div class="row">
+        <form [formGroup]="mrnEntry">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Warehouse<sup class="text-danger">*</sup></label>
+                                    <ng-select [items]="warehouse" bindLabel="warehouseName" class="js-example-basic-single"
+                                        placeholder="Select Warehouse"></ng-select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Account<sup class="text-danger">*</sup></label>
+                                    <ng-select [items]="account" class="js-example-basic-single"
+                                        placeholder="Select Account" bindLabel="accountName" bindValue="accountId"></ng-select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Challan No.<sup class="text-danger">*</sup></label>
+                                    <input type="text" name="" id="" placeholder="Challan No"
+                                        class="form-control form-control-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Challan Date<sup class="text-danger">*</sup></label>
+                                    <input type="date" name="" id="" placeholder="Challan Date"
+                                        class="form-control form-control-sm">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <label for="role_name" class="form-label">Remark</label>
+                                    <textarea name="" id="" class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <h5>MRN Detail</h5>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-dark" (click)="addItem()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="text-center">
+                                <th>Item<sup class="text-danger">*</sup></th>
+                                <th>HSN<sup class="text-danger">*</sup></th>
+                                <th width="10%">Rate<sup class="text-danger">*</sup></th>
+                                <th width="10%">Quantity<sup class="text-danger">*</sup></th>
+                                <th width="5%">Unit<sup class="text-danger">*</sup></th>
+                                <th width="10%">Amount<sup class="text-danger">*</sup></th>
+                            </thead>
+                            <tbody  formArrayName="itemsForm">
+                                <tr *ngFor="let a of controls; let i = index" [formGroupName]="i">
+                                    <td class="text-start"><ng-select [items]="items" bindLabel="name" bindValue="name" class="js-example-basic-single"
+                                            placeholder="Select Item"></ng-select>
+                                    </td>
+                                    <td>453</td>
+                                    <td> <input type="number" formControlName="rate"  name="" id="" placeholder="Rate"
+                                        class="form-control form-control-sm" (input)="calculateAmount(i)">
+                                    </td>
+                                    <td> <input type="number" formControlName="quantity"  name="" id="" placeholder="Quantity"
+                                        class="form-control form-control-sm" (input)="calculateAmount(i)">
+                                    </td>
+                                    <td>Kg</td>
+                                    <td> <input type="text" formControlName="amount" name="" id="" placeholder="Amount"
+                                        class="form-control form-control-sm" readonly> 
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

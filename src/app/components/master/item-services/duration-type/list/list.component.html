@@ -1,0 +1,50 @@
+<app-breadcrumb [title]="'Duration Type'">
+    <div class="buttons text-end">
+        <a routerLink="add" class="btn btn-primary">Add Duration</a>
+    </div>
+</app-breadcrumb>
+<div class="contianer-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body overflow-x-auto">
+                    <table datatable class="row-border hover mb-4">
+                        <thead>
+                            <tr>
+                                <th width="8%">Sr. No</th>
+                                <th>Title</th>
+                                <th>Days</th>
+                                <th>Description</th>
+                                <th width="10%">Status</th>
+                                <th width="8%" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tableList; index as index">
+                                <td class="">{{ index+1}}</td>
+                                <td class="">{{ item.name }}</td>
+                                <td class="">{{ item.days }}</td>
+                                <td class="">{{ item.description }}</td>
+                                <td class="align-middle">
+                                    <div class="media-body switch-sm d-flex  align-items-center  ">
+                                        <label class="switch m-0">
+                                            <input type="checkbox" checked=""><span class="switch-state"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-evenly col-12 ">
+                                            <a routerLink="edit"><i class="icofont icofont-ui-edit"></i></a>
+                                            <a routerLink="view"><i class="icofont icofont-eye"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

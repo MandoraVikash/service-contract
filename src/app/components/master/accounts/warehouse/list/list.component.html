@@ -1,0 +1,48 @@
+ <app-breadcrumb [title]="'Warehouse'">
+    <div class="buttons text-end">
+      <a routerLink="add"><button class="btn btn-sm btn-primary">Add Warehouse</button></a>
+    </div>
+  </app-breadcrumb> 
+  
+  <div>
+      <div class="card">
+          <div class="card-body overflow-x-auto">
+               
+             <table datatable class="row-border hover mb-4">
+                  <thead> 
+                      <tr>
+                          <th>Sr. No</th>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th>City - State</th>
+                          <th width="6%" >Status</th>
+                          <th width="6%" class="text-center">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody class="">
+                      <tr *ngFor="let item of tableList; let i = index">
+                          <td class="">{{ i+1 }}</td>
+                          <td class="">{{ item.warehouseName }}</td>
+                          <td class="">{{ item.address }}</td>
+                          <td class="">{{ item.city.cityName + " - " + item.state.stateName }}</td>
+                          <td class="align-middle">
+                              <div class="media-body switch-sm d-flex  align-items-center  ">
+                                  <label class="switch m-0">
+                                      <input type="checkbox" checked=""><span class="switch-state"></span>
+                                  </label>
+                              </div>
+                          </td>
+                          <td>
+                             <div class="d-flex justify-content-center">
+                              <div class="d-flex justify-content-evenly col-12 ">
+                                  <a routerLink="edit"><i class="icofont icofont-ui-edit"></i></a>
+                                  <a routerLink="view"><i class="icofont icofont-eye"></i></a>
+                              </div>
+                             </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
